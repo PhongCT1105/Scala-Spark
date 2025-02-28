@@ -266,7 +266,7 @@ def gen_mega_event(num, num_tables) -> Tuple[pd.DataFrame, pd.DataFrame, pd.Data
 		data['id'].append(i)
 		data["name"].append(fake.name())
 		data["table-i"].append(random.randint(0,num_tables))
-		if random.randint(0, 1) == 0: 
+		if random.randint(0, 3) < 1: 
 			data["test"].append("sick")
 			data_sick["id"].append(i)
 			data_sick["test"].append
