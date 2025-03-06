@@ -4,6 +4,9 @@ target/
 !**/src/test/**/target/
 
 /big-data/
+.idea/
+.metals/
+**.crc
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
