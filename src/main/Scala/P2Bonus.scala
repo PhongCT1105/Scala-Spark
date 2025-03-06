@@ -2,7 +2,7 @@ import org.apache.spark.sql.{SparkSession, DataFrame}
 import org.apache.spark.ml.regression.LinearRegression
 import org.apache.spark.ml.feature.VectorAssembler
 
-object Bonus {
+object P2Bonus {
   def main(args: Array[String]): Unit = {
     val spark = SparkSession.builder()
       .appName("Spark MLlib - Predicting TransTotal")
