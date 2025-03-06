@@ -13,8 +13,8 @@ object Part1_5 {
     val sparConf = new SparkConf().setMaster("local").setAppName("Part1_5")
     val sc = new SparkContext(sparConf)
 
-    val megaEvent = sc.textFile("Mega_Event_No_Disclosure.csv")
-    val sickReport = sc.textFile("Reported_Illnesses.csv")
+    val megaEvent = sc.textFile("small-data/Mega_Event_No_Disclosure.csv")
+    val sickReport = sc.textFile("small-data/Reported_Illnesses.csv")
 
     // Properly parse CSV lines while handling potential commas within quotes
     val peopleRDD = megaEvent.map(line => {
