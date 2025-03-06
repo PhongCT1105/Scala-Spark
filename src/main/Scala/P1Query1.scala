@@ -1,7 +1,7 @@
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 
-object Query1 {
+object P1Query1 {
 
   def main(args: Array[String]): Unit = {  
 
