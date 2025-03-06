@@ -14,18 +14,18 @@ object Bonus {
     // Load Customer CSV
     val customersDF: DataFrame = spark.read.option("header", "true")
       .option("inferSchema", "true")
-      .csv("data/Customers.csv")
+      .csv("small-data/Customers.csv")
 
     // Load Purchases CSV
     val purchasesDF: DataFrame = spark.read.option("header", "true")
       .option("inferSchema", "true")
-      .csv("data/Purchases.csv")
+      .csv("small-data/Purchases.csv")
 
     // Perform Inner Join on CustomerID
-    val joinedDF = customersDF.join(purchasesDF, "CustomerID")
+    val joinedDF = customersDF.join(purchasesDF, "CustID")
 
     // Assemble feature columns into a single vector
-    val featureCols = Array("Age", "Salary", "NumItems")
+    val featureCols = Array("Age", "Salary", "TransNumItems")
     val assembler = new VectorAssembler()
       .setInputCols(featureCols)
       .setOutputCol("features")
@@ -33,14 +33,14 @@ object Bonus {
     val transformedDF = assembler.transform(joinedDF)
 
     // Rename the target column to "label"
-    val finalDF = transformedDF.select("features", $"TransTotal".alias("label"))
+    val finalDF = transformedDF.select($"features", $"TransTotal".alias("label"))
 
     // Split dataset into training (80%) and testing (20%)
     val Array(trainDF, testDF) = finalDF.randomSplit(Array(0.8, 0.2), seed = 42)
 
     // Define Linear Regression model
     val lr = new LinearRegression()
-      .setMaxIter(10)
+      .setMaxIter(20)
       .setRegParam(0.3)  // Regularization parameter
       .setElasticNetParam(0.8) // Elastic Net (0 = Ridge, 1 = Lasso)
 

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>WordCount_Scala</artifactId>
+    <artifactId>Project3</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -23,12 +23,12 @@
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-sql_2.12</artifactId>
-            <version>2.4.3</version>
+            <version>3.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-mllib_2.12</artifactId>
-            <version>2.4.3</version>
+            <version>3.0.0</version>
         </dependency>
     </dependencies>
 
