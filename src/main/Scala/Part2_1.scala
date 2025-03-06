@@ -20,7 +20,7 @@ object Part2_1 {
     val customerDF = spark.read
       .option("header", "true") // If CSV files have headers
       .option("inferSchema", "true") // Infer schema automatically
-      .csv("small-data/Purchases.csv")
+      .csv("Purchases.csv")
       .as[Purchases] // Convert to Dataset[Purchases]
 
     val filteredDF = customerDF
