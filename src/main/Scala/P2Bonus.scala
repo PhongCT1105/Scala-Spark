@@ -1,6 +1,7 @@
 import org.apache.spark.sql.{SparkSession, DataFrame}
 import org.apache.spark.ml.regression.{DecisionTreeRegressor, DecisionTreeRegressionModel}
 import org.apache.spark.ml.feature.VectorAssembler
+import org.apache.spark.ml.regression.LinearRegression
 import org.apache.spark.ml.evaluation.RegressionEvaluator
 
 
@@ -43,9 +44,8 @@ object P2Bonus {
       .setLabelCol("label")
       .setFeaturesCol("features")
       .setMaxDepth(5)  // Control tree depth to prevent overfitting
+      val model = dt.fit(trainset)
 
-    // Train model
-    val model: DecisionTreeRegressionModel = dt.fit(trainset)
     val predictions = model.transform(testset)
     predictions.select("features", "label", "prediction").show()
 
