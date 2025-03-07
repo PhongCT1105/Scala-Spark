@@ -2,7 +2,7 @@ import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 
 // Define a case class for structured data
-//case class Person(id: String, name: String, table: String, test: String)
+case class Person(id: String, name: String, table: String, test: String)
 
 object Part1Query4 {
 
