@@ -52,9 +52,9 @@ def gen_mega_event(num: int, num_tables: int) -> Tuple[pd.DataFrame, pd.DataFram
     data_frame_no_test = data_frame.drop(columns=["test"])
     
     # Set index
-    data_frame_no_test.set_index("id")
-    data_frame.set_index("id")
-    df_sick.set_index("id")
+    # data_frame_no_test.set_index("id")
+    # data_frame.set_index("id")
+    # df_sick.set_index("id")
 
     return data_frame_no_test, data_frame, df_sick
 
@@ -83,7 +83,7 @@ def gen_customers(num) -> pd.DataFrame:
 		data["Salary"].append(random.randint(1000, 10000))
 
 	data_frame = pd.DataFrame(data)
-	data_frame.set_index('CustID')
+	# data_frame.set_index('CustID')
 	return data_frame
 
 def generate_word_within_length(fake: Faker, min_length=20, max_length=50):
@@ -109,7 +109,7 @@ def gen_purchases(num_purchases, num_cust) -> pd.DataFrame:
 		data["TransDesc"].append(generate_word_within_length(fake))
 
 	data_frame = pd.DataFrame(data)
-	data_frame.set_index('TransID')
+	# data_frame.set_index('TransID')
 	return data_frame
 
 if __name__ == "__main__":
