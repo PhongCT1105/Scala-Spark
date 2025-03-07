@@ -27,14 +27,13 @@ object P2Query3 {
     // Temp output path
     val outputPath = "output/T1_temp.csv"
 
-    // Group by CustomerID and compute total items and total amount
-    val groupedDF = genZDF.groupBy("CustID", "Age")
+    val groupedDF = genZDF.groupBy("CustID")
       .agg(
+        first("Age").alias("Age"),
         sum("TransNumItems").alias("TotalItems"),
-        round(sum("TransTotal").alias("TotalSpent"), 2)
+        round(sum("TransTotal"), 2).alias("TotalSpent")
       )
 
-    // Store result as T3
     groupedDF.coalesce(1).write.option("header", "true").csv(outputPath)
 
     // Rename output for future tasks
