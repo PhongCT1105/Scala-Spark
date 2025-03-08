@@ -12,7 +12,7 @@ object P2Query4 {
     val t1DF = spark.read
       .option("header", "true")
       .option("inferSchema", "true")
-      .csv("T1.csv")
+      .csv("Purchases.csv")
 
     val customersDF = spark.read
       .option("header", "true")
